@@ -10,7 +10,7 @@ const urlencodedParser = bodyParser.urlencoded({
     extended: false
 })
 
-const BASEURL = process.env.BASEURL;
+const BASEURL = process.env.APP_URL;
 
 //Get all the to-do's
 router.get(`${BASEURL}/todos`, Controllers.getAllTodos);
