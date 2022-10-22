@@ -1,5 +1,6 @@
 import {Router} from 'express';
 import bodyParser from 'body-parser';
+import * as Controllers from '../controllers/todoController';
 
 const router = Router();
 const urlencodedParser = bodyParser.urlencoded({
@@ -7,26 +8,16 @@ const urlencodedParser = bodyParser.urlencoded({
 })
 
 //Get all the to-do's
-router.get('/todos/', (req, res) => {
-
-})
+router.get('/todos/', Controllers.getAllTodos);
 
 //Get one of the to-do's by ID
-router.get('/todos/:id', (req, res) => {
-    
-})
+router.get('/todos/:id', Controllers.getTodo );
 
 //Add a new to-do
-router.post('/todos', urlencodedParser, (req, res) => {
-    
-})
+router.post('/todos', urlencodedParser, Controllers.addNewTodo);
 
 //Edit one of the to-do's by ID
-router.put('/todos/:id', urlencodedParser, (req, res) => {
-    
-})
+router.put('/todos/:id', urlencodedParser, Controllers.editTodo);
 
 //Delete a to-do by id
-router.delete('/todos/:id', (req, res) => {
-    
-})
+router.delete('/todos/:id', Controllers.deleteTodo);
