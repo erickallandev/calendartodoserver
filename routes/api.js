@@ -8,7 +8,7 @@ const urlencodedParser = bodyParser.urlencoded({
 })
 
 //Get all the to-do's
-router.get('/todos/', Controllers.getAllTodos);
+router.get('/todos', Controllers.getAllTodos);
 
 //Get one of the to-do's by ID
 router.get('/todos/:id', Controllers.getTodoById );

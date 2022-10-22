@@ -1,0 +1,146 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "CalendarTodo API",
+        "description": "Documentação do API do CalendarTodo",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "host": "localhost:3001",
+    "basePath": "/api-docs",
+    "paths": {
+        "/todos": {
+            "get": {
+                "description": "Lista todas as atividades",
+                "responses": {
+                    "200": {
+                        "description": "Resposta da lista de atividades",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Todo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Adicionar uma nova atividade",
+                "requestBody": {
+                    "required": "true",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Todo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Retorna a nova atividade adicionada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/NewTodo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/todos/{id}": {
+            "summary": "Informações relacionadas a uma atividade pelo id",
+            "get": {
+                "summary": "Obter informações de uma determinada atividade",
+                "responses": {
+                    "200": {
+                        "description": "Resposta das informações da atividade",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Todo"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Editar uma tarefa específica",
+                "requestBody": {
+                    "required": "true",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NewTodo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Retorna a tarefa atualizada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Todo"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletar uma tarefa específica",
+                "responses": {
+                    "204": {
+                        "description": "Confirma a exclusão da tarefa"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Todo": {
+                "allOf": [{
+                    "$ref": "#/components/schemas/NewTodo",
+                    "required": "id",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        }
+                    }                    
+                }]
+            },
+            "NewTodo": {
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string"
+                    },
+                    "timestart": {
+                        "type": "string"
+                    },
+                    "timeend": {
+                        "type": "string"
+                    }
+                },
+                "required": "title"
+            }
+        }
+    }
+}
