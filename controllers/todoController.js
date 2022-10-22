@@ -1,11 +1,11 @@
-import Todo from '../models/todo';
+import Todo from '../models/todo.js';
 
 export const getAllTodos = async (req, res) => {
     let todos = await Todo.findAll();
     res.json({todos});
 }
 
-export const getTodo = async (req, res) => {
+export const getTodoById = async (req, res) => {
     let id = req.params.id;
     let todo = await Todo.findByPk(id);
 
