@@ -10,21 +10,20 @@ const urlencodedParser = bodyParser.urlencoded({
     extended: false
 })
 
-const BASEURL = process.env.API_URL;
 
 //Get all the to-do's
-router.get(`${BASEURL}/todos`, Controllers.getAllTodos);
+router.get('/todos', Controllers.getAllTodos);
 
 //Get one of the to-do's by ID
-router.get(`${BASEURL}/todos/:id`, Controllers.getTodoById );
+router.get('/todos/:id', Controllers.getTodoById );
 
 //Add a new to-do
-router.post(`${BASEURL}/todos`, urlencodedParser, Controllers.addNewTodo);
+router.post('/todos', urlencodedParser, Controllers.addNewTodo);
 
 //Edit one of the to-do's by ID
-router.put(`${BASEURL}/todos/:id`, urlencodedParser, Controllers.editTodo);
+router.put('/todos/:id', urlencodedParser, Controllers.editTodo);
 
 //Delete a to-do by id
-router.delete(`${BASEURL}/todos/:id`, Controllers.deleteTodo);
+router.delete('/todos/:id', Controllers.deleteTodo);
 
 export default router
